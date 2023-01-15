@@ -1,0 +1,558 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    width: 400px;
+    height: 48px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #0EA5E9;
+}
+
+button {
+    width: 200px;
+    height: 36px;
+    margin-bottom: 20px;
+
+    background: #0EA5E9;
+    border: 1px solid #0EA5E9;
+    border-radius: 5px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+    line-height: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    background: #0EA5E9;
+}
+
+.headerText {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #FFFFFF;
+}
+
+.navList {
+    display: flex;
+    cursor: pointer;
+}
+.showNavList {
+    display: flex;
+    cursor: pointer;
+}
+.navItem {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    color: #FFFFFF; 
+}
+
+.navItemSelected {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration-line: underline;
+
+    margin-right: 30px;
+
+    color: #FFFFFF;
+}
+
+.navItem:not(:last-child) {
+    margin-right: 30px;
+}
+
+a:visited, a:focus, a:hover, a:active {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration-line: underline;
+
+    color: #FFFFFF;
+}
+
+.burger {
+    display: none;
+    width: 35px;
+    height: 35px;
+}
+
+.burgerButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+    background-color:#0EA5E9;
+}
+
+.burgerLine {
+    width: 35px;
+    height: 5px;
+
+    background-color: white;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loginText {
+    width: 40px;
+    height: 19px;
+    
+    margin-top: 275px;
+    margin-bottom: 50px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0EA5E9;
+}
+
+.inputText {
+    width: auto;
+    height: 19px;
+    margin-bottom: 20px;
+
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0EA5E9;
+}
+
+.regText {
+    width: 105px;
+    height: 19px;
+    
+    margin-top: 200px;
+    margin-bottom: 50px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0EA5E9;
+}
+
+.adsList, .myAdsList{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.myAdsList {
+    margin-top: 50px;
+}
+
+.adBox {
+    display: flex;
+
+    margin-bottom: 60px;
+}
+
+.fotoAndTel {
+    width: 150px;
+}
+
+.adImg, .myAdImg, .imgCreateAd, .imgUpdateAd {
+    height:150px;
+    width: 150px;
+    object-fit:cover;
+    
+    margin-bottom: 10px;
+}
+
+.myAdImg {
+    margin-bottom: 0;
+}
+
+.adTel {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    height: 30px;
+    width: 150px;
+    margin-bottom: 0;
+   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #000000;
+}
+
+.adTelHidden {
+    display: none;
+}
+
+.adButton, .myAdButton, .buttonDelete, .buttonChange, .inputUploadLabel, .inputUpload, .buttonSave, .popupButton {
+    box-sizing: border-box;
+
+    height: 30px;
+    width: 150px;
+    margin-bottom: 0;
+
+    background: #0EA5E9;
+    border: 1px solid #0EA5E9;
+    border-radius: 0;
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FFFFFF;
+}
+
+.popupButton:not(:last-child) {
+    margin-right: 20px;
+} 
+
+.inputUploadLabel, .inputSave {
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.inputUpload {
+    visibility: hidden;
+}
+
+.buttonChange {
+    margin-right: 20px;
+}
+
+.adButtonHidden {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.addButton {
+    display: flex;
+    justify-content: end;
+
+    margin-top: 80px;
+    margin-bottom: 50px;
+
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-left: 15px;
+}
+
+.id {
+    display: none;
+}
+
+.adInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleAndDiscription {
+
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.title {
+    margin-bottom: 5px;
+}
+
+.adPrice {
+    display: flex;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #000000;
+}
+
+.priceValue {
+    margin-right: 5px;
+
+    width:max-content;
+}
+
+.salesmanInfo {
+    display: flex;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 30px;
+
+    color: #000000;
+}
+
+.salesmanTitle {
+    margin-right: 5px;
+}
+
+.titleCreateAd, .descriptionCreateAd, .priceCreateAd, .titleUpdateAd, .descriptionUpdateAd, .priceUpdateAd {
+    width: -webkit-fill-available;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.titleCreateAd, .titleUpdateAd {
+    margin-top: 80px;
+}
+
+.titleCreateAdText, .descriptionCreateAdText, .priceCreateAdText, .emptyMyAdsListText, .titleUpdateAdText, .descriptionUpdateAdText, .priceUpdateAdText, .popupText{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #000000;
+}
+
+.titleCreateAdInput, .descriptionCreateAdInput, .priceCreateAdInput, .titleUpdateAdInput, .descriptionUpdateAdInput, .priceUpdateAdInput {
+    margin-bottom: 0;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #000000;
+
+    padding: 2px;
+}
+
+.descriptionCreateAdInput, .descriptionUpdateAdInput {
+    height: 150px;
+}
+
+.uploadBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.imgUploadBox {
+    display: flex;
+}
+
+.imgCreateAd, .imgUpdateAd {
+    margin-right: 20px;
+    margin-bottom: 40px;
+}
+
+.hideImgCreateAd, .hideImgUpdateAd {
+    display: none;
+}
+
+.popupBoxHide {
+    display: none;
+}
+
+.popupBoxShow {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    height: 250px;
+    width: fit-content;
+
+    padding: 20px;
+    margin: auto;
+
+    border: 1px solid #0EA5E9;
+    background-color: #FFFFFF;
+}
+
+.buttonPopupBox {
+    display: flex;
+    align-content: space-between;
+}
+
+@media (max-width: 393px) { 
+
+    .showNavList {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        cursor: pointer;
+    }
+
+    .navList {
+        display: none;
+    }
+
+    .navItem {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+
+    .navItemSelected {
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+
+    .navItem:not(:last-child) {
+        margin-right: 0;
+    }
+
+    .navItem:first-child {
+        margin-top: 30px;
+    }
+
+    .navItemSelected:first-child {
+        margin-top: 30px;
+    }
+
+    .burger {
+        display: block;
+        margin-top: 12px;
+    }
+
+    .mobileNav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        line-height: normal;
+    }
+
+    input {
+        width: 300px;
+    }
+
+    .adBox {
+        flex-direction: column;
+    }
+
+    .fotoAndTel, .myAdImg {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 50px;
+    }
+
+    .detail {
+        margin-left: 0;
+    }
+    
+    .adInfo {
+        flex-direction: column;
+    }
+
+    .adPrice {
+        margin-bottom: 10px;
+    }
+
+    .addButton {
+        justify-content: center;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .myAdButton:not(:last-child) {
+        margin-bottom: 15px;
+        margin-right: 0;
+    }
+
+    .buttonChange {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .uploadBox {
+        align-items: center;
+    }
+
+    .imgUploadBox {
+        flex-direction: column;
+    }
+
+    .imgCreateAd, .imgUpdateAd {
+        margin-right: 0px;
+    }
+
+    
+}
+
