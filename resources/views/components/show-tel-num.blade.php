@@ -1,0 +1,1 @@
+<div class="adTel" id="adTel">{{ $ad->phone_num }}</div>

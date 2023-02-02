@@ -1,56 +1,56 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <div class="mb-8 text-center text-sky-500 font-bold">Вход</div>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <!-- Email Address -->
+        <div>
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-label for="email" :value="__('Email')" />
+        </div>
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+        <!-- Password -->
+        <div class="mt-4">
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="current-password" />
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-label for="password" :value="__('Пароль')" />
+        </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox" class="rounded border-sky-500 text-sky-500 shadow-sm focus:ring-sky-500" name="remember">
+                <span class="ml-2 text-sm text-sky-500">{{ __('Запомнить меня') }}</span>
+            </label>
+        </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
+        <div class="">
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                    <a class="underline text-sm text-sky-500 hover:text-sky-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500" href="{{ route('password.request') }}">
+                        {{ __('Восстановить пароль') }}
                     </a>
                 @endif
 
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
+                <x-primary-button class="ml-3">
+                    {{ __('Войти') }}
+                </x-primary-button>
             </div>
-        </form>
-    </x-auth-card>
+            <div class="flex items-center justify-end mt-4">
+                <x-primary-button class="ml-3">
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="text-sm text-white dark:text-gray-500 underline-none">Зарегистрироваться</a>
+                    @endif
+                </x-primary-button>
+            </div>
+        </div>
+    </form>
 </x-guest-layout>
