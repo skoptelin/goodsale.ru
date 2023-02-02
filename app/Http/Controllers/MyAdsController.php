@@ -20,7 +20,7 @@ class MyAdsController extends Controller
         $ads = DB::table('ads')
                 ->select('ads.id', 'ads.title', 'ads.description', 'ads.price', 'ads.picture')
                 ->where('user_id', $userId)
-                ->orderByRaw('ads.created_at - ads.updated_at DESC')
+                ->orderBy('ads.updated_at', 'desc')
                 ->get();
         return view('ads/myAds', [
             'myAds' => $ads

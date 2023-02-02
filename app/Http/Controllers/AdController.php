@@ -18,7 +18,7 @@ class AdController extends Controller
         $ads = DB::table('ads')
                 ->join('users', 'users.id', '=', 'ads.user_id')
                 ->select('ads.id', 'ads.title', 'ads.description', 'ads.price', 'ads.picture', 'users.name', 'users.phone_num')
-                ->orderByRaw('ads.created_at - ads.updated_at DESC')
+                ->orderBy('ads.updated_at', 'desc')
                 ->get();
         return view('ads/index', [
             'activeAds' => $ads
@@ -42,15 +42,7 @@ class AdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(){
-        /* $userId = Auth::user()->id;
-        $ads = DB::table('ads')
-                ->select('ads.id', 'ads.title', 'ads.description', 'ads.price', 'ads.picture')
-                ->where('user_id', $userId)
-                ->orderByRaw('ads.created_at - ads.updated_at DESC')
-                ->get();
-        return view('ads/myAds', [
-            'MyAds' => $ads
-        ]); */
+
     }
 
     /**
