@@ -1,50 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Список моих объявлений</title>
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/sass/app.scss'])
-</head>
-<body>
-    <x-app-layout>
-        <div class="adsList">
-            <form action="my_ads/create" class="addButton" id="addButton">
-                <input type="submit" id="addButton" class="myAdButton" value="Добавить">
-            </form>
-            @for ($i = 0; $i < count($myAds); $i++)
-                <div class="adBox" id={{"adBox" . $i }} >
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Список моих объявлений</title>
+        <!-- Scripts -->
+        @vite(['resources/js/app.js', 'resources/sass/app.scss'])
+        
+    </head>
+    <body>
+        <x-app-layout>
 
-                    <div class="fotoAndTel" id={{"fotoAndTel" . $i}}>
-                        <img class="myAdImg" id={{"adImg" . $i}} src="{{ Vite::asset('storage/app/images/' . $myAds[$i]->picture) }}">
-                    </div>  
+            <!--MyAdsList--> 
+            <div class="adsList">
+                <form action="my_ads/create" class="addButton" id="addButton">
+                    <button type="submit" id="addButton" class="myAdButton">Добавить</button>
+                </form>
 
-                    <div class="detail" id={{"detail" . $i}}>
-                        <div class="id" id={{"id" . $i}}>{{ $myAds[$i]->id }}</div>
-                        <div class="adInfo" id={{"adInfo" . $i}}>
-                            <div class="titleAndDiscription" id={{"titleAndDiscription" . $i}}>
-                                <div class="title" id={{"title" . $i}}>{{ $myAds[$i]->title }}</div>
-                                <div class="discription" id={{"discription" . $i}}>{{ $myAds[$i]->description }}</div>
+                @foreach ($myAds as $myAd)
+                    <div data-ad-id="{{ $myAd->id }}" class="adBox" id="adBox">
+
+                        <div class="fotoAndTel" id="fotoAndTel">
+                            <img class="myAdImg" id="adImg" src="{{ Vite::asset('storage/app/images/' . $myAd->picture) }}">
+                        </div>  
+
+                        <div class="detail" id="detail">
+                            <div class="adInfo" id="adInfo">
+                                <div class="titleAndDiscription" id="titleAndDiscription">
+                                    <div class="title" id="title">{{ $myAd->title }}</div>
+                                    <div class="discription" id="discription">{{ $myAd->description }}</div>
+                                </div>
+
+                                <div class="adPrice" id="adPrice">
+                                    <div class="priceValue" id="priceValue">{{ number_format($myAd->price, 0, ',', ' ') }}</div>
+                                    <div class="currency" id="currency">₽</div>
+                                </div>
                             </div>
 
-                            <div class="adPrice" id={{"adPrice" . $i}}>
-                                <div class="priceValue" id={{"priceValue" . $i}}>{{ number_format($myAds[$i]->price, 0, ',', ' ') }}</div>
-                                <div class="currency" id={{"currency" . $i}}>₽</div>
+                            <div class="salesmanInfo" id="salesmanInfo">
+                                <div class="salesmanCityBlock">
+                                    <div class="salesmanCity" id="salesmanCity">Местоположение:</div>
+                                    <div class="salesmanCityValue" id="salesmanCityValue">{{ $myAd->city }}</div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="buttons" id={{ "buttons" . $i }}>
-                            <button id={{ "buttonChange" . $i }} class="buttonChange">Изменить</button>
-                            <button id={{ "buttonDelete" . $i }} class="buttonDelete">Удалить</button>
+                            
+                            <div class="buttons" id="buttons">
+                                <form method="get" id="popupForm" action="/my_ads/{{ $myAd->id }}/edit">
+                                    @csrf
+                                    <button id="buttonChange" class="buttonChange">Изменить</button>
+                                </form>
+                                <button onclick="myAds.showPopupDelete({{ $myAd->id }}, event)" id="buttonDelete" class="buttonDelete">Удалить</button>
+                            </div>
                         </div>
                     </div>
+                @endforeach
+
+                <!--Popup-->    
+                <div class="popupBoxShow hidden" id="popupBoxShow">
+                    <div class="backPopupBox"></div>
+                    <div class="popupText" id="popupText"></div>
+                    <div class="buttonPopupBox" id="buttonPopupBox">
+                        <form method="post" id="popupForm">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" id="popupButtonYes" class="popupButtonYes">Да</button>
+                        </form>
+                        <button onclick="myAds.hidePopupDelete()" id="popupButtonNo" class="popupButtonNo">Нет</button>
+                    </div>
                 </div>
-            @endfor
-        </div>
-    </x-app-layout>
-</body>
+            </div>
+        </x-app-layout>
+    </body>
 </html>
 
 

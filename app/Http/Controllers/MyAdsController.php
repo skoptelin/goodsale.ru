@@ -6,7 +6,7 @@ use App\Models\ad;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Storage;
 
 class MyAdsController extends Controller
 {
@@ -18,7 +18,7 @@ class MyAdsController extends Controller
     public function index(){
         $userId = Auth::user()->id;
         $ads = DB::table('ads')
-                ->select('ads.id', 'ads.title', 'ads.description', 'ads.price', 'ads.picture')
+                ->select('ads.id', 'ads.title', 'ads.description', 'ads.price', 'ads.picture', 'ads.city')
                 ->where('user_id', $userId)
                 ->orderBy('ads.updated_at', 'desc')
                 ->get();
@@ -79,9 +79,14 @@ class MyAdsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $ad = ad::where('id', $id)
+                ->first();
+        /* dd */($ad);
+
+        return view('ads/updateAd', [
+            'ad' => $ad
+        ]);
     }
 
     /**
@@ -91,9 +96,40 @@ class MyAdsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        // Удаляем старую картинку, сохраняем новую картирнку, если она загружена
+        if ($request->hasFile('picture')) {
+            $imgNew = $request->file('picture')->store('images'); //Получаем имя новой картинки
+            $imgNewName = substr($imgNew, 7); //Формируем название файла для записи в БД
+
+            $imgOld = ad::select('picture') //Достаем имя старой картинки
+            ->where('id', $id)
+            ->first();
+            Storage::delete('images/' . $imgOld->picture); //Удаляем старую картинку
+
+            ad::updateOrInsert(
+                ['id' => $id],
+                ['picture' => $imgNewName]
+            );
+        }
+        
+        // Обновляем объявление в БД
+        $statusID = 3; //Пригодится когда внедрю статусы
+        $current_date_time = \Carbon\Carbon :: now ()-> toDateTimeString ();
+
+        ad::updateOrInsert(
+            ['id' => $id],
+            [
+                'title'       => $request->input('title'),
+                'description' => $request->input('description'),
+                'price'       => $request->input('price'),
+                'city'        => $request->input('city'),
+                'status_id'   => $statusID,
+                'updated_at'  => $current_date_time
+            ]
+        );
+        
+        return redirect('my_ads');
     }
 
     /**
@@ -102,8 +138,16 @@ class MyAdsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+        $img = ad::select('picture')
+            ->where('id', $id)
+            ->first();
+        if(Storage::exists('images/' . $img->picture)){
+            Storage::delete('images/' . $img->picture);
+        }
+        
+        ad::where('id', $id)->delete();
+
+        return redirect('my_ads');
     }
 }

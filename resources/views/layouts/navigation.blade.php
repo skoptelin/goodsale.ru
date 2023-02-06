@@ -8,19 +8,8 @@
                     <x-nav-link class="border-none underline-none" :href="route('ads.index')" :active="request()->routeIs('ads.index')">
                         {{ __('GoodSale.ru') }}
                     </x-nav-link>
-                    {{-- <a href="{{ route('ads.index') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 headerText" />
-                    </a> --}}
                 </div>
-
-           {{--      <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('ads.index')" :active="request()->routeIs('ads.index')">
-                        {{ __('Лента') }}
-                    </x-nav-link>
-                </div> --}}
             </div>
-
             
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Navigation Links -->

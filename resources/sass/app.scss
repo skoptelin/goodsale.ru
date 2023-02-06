@@ -105,6 +105,7 @@
 
             width: 100%;
             margin-left: 15px;
+            margin-right: 15px;
 
             .id {
                 display: none;
@@ -151,6 +152,7 @@
 
             .salesmanInfo {
                 display: flex;
+                justify-content: space-between;
 
                 font-family: 'Inter';
                 font-style: normal;
@@ -160,9 +162,22 @@
 
                 color: #000000;
 
-                .salesmanTitle {
-                    margin-right: 5px;
+                .salesmanNameBlock{
+                    display: flex;
+
+                    .salesmanTitle {
+                        margin-right: 5px;
+                    }
                 }
+
+                .salesmanCityBlock{
+                    display: flex;
+    
+                    .salesmanCity{
+                        margin-right: 5px;
+                    }
+                }
+                    
             }
 
             .buttons {
@@ -191,6 +206,98 @@
             }
         }
     }
+
+    .popupBoxShow {
+        position: fixed;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 250px;
+        width: fit-content;
+        padding: 20px;
+        margin: auto;
+        border: 1px solid #0EA5E9;
+        background-color: #FFFFFF;
+
+        /* .backPopupBox {
+            position: absolute;
+            z-index: 101;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background-color: gray;
+            opacity: 70%;
+        } */
+        .popupText {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: #000000;
+        }
+        .buttonPopupBox {
+            display: flex;
+            align-content: space-between;
+
+            .popupButtonYes {
+                box-sizing: border-box;
+                height: 30px;
+                width: 150px;
+                margin-bottom: 0;
+                margin-right: 20px;
+                background: #0EA5E9;
+                border: 1px solid #0EA5E9;
+                border-radius: 0;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 15px;
+                color: #FFFFFF;
+            }
+
+            .popupButtonNo {
+                box-sizing: border-box;
+                height: 30px;
+                width: 150px;
+                margin-bottom: 0;
+                background: #0EA5E9;
+                border: 1px solid #0EA5E9;
+                border-radius: 0;
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 15px;
+                color: #FFFFFF;
+            }
+        }
+
+    }
+
+    .hidden {
+        display: none;
+    }
+}
+
+.titleText {
+    margin: 20px;
+    margin-bottom: 0;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
 }
 
 .inputList {
@@ -236,8 +343,17 @@
     .imgUploadBox {
         display: flex;
 
-        .hideImgCreateAd {
+        .hideAdImg {
             display: none;
+        }
+
+        .showAdImg {
+            margin-right: 20px;
+            margin-bottom: 40px;
+
+            width: 150px;
+            height: 150px;
+            object-fit:cover;
         }
 
         .inputUploadLabel {
@@ -245,6 +361,7 @@
             text-align: center;
             padding-top: 5px;
 
+            cursor: pointer;
             box-sizing: border-box;
             height: 30px;
             width: 150px;
@@ -270,6 +387,7 @@
 
     .buttonSave {
         box-sizing: border-box;
+        cursor: pointer;
         height: 30px;
         width: 150px;
         margin-bottom: 0;
@@ -285,13 +403,17 @@
     }
 }
 
-@media (max-width: 393px) { 
+@media (max-width: 700px) { 
     .adsList {
         margin-top: 40px;
         margin-left: 0;
         margin-right: 10px;
 
         .addButton {
+            justify-content: center;
+        }
+
+        .myAdButton {
             justify-content: center;
         }
     }
@@ -326,5 +448,21 @@
             }
         }
     }
+
+    .uploadBox {
+        align-items: center;
+
+        .imgUploadBox {
+            align-items: center;
+            flex-direction: column;
+        }
+    
+        .showAdImg {
+            align-items: center;
+            margin-right: 0px;
+        }
+    }
+
+    
 }
 

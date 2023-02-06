@@ -17,7 +17,7 @@ class AdController extends Controller
     public function index(){
         $ads = DB::table('ads')
                 ->join('users', 'users.id', '=', 'ads.user_id')
-                ->select('ads.id', 'ads.title', 'ads.description', 'ads.price', 'ads.picture', 'users.name', 'users.phone_num')
+                ->select('ads.id', 'ads.title', 'ads.description', 'ads.price', 'ads.picture', 'users.name', 'users.phone_num', 'ads.city')
                 ->orderBy('ads.updated_at', 'desc')
                 ->get();
         return view('ads/index', [
