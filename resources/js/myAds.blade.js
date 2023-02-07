@@ -3,7 +3,6 @@ export default {
     showPopupDelete(id, event) {
         let button          = event.target;
         let adBox           = button.closest(".adBox");
-        console.log(adBox);
         let popupBox        = document.querySelector(".popupBoxShow");
         popupBox.dataset.id = id;
         let text            = "Вы действительно хотите удалить объявление " + adBox.querySelector(".title").textContent + "?";

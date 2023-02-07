@@ -7,7 +7,7 @@
         <title>Список моих объявлений</title>
         <!-- Scripts -->
         @vite(['resources/js/app.js', 'resources/sass/app.scss'])
-        
+
     </head>
     <body>
         <x-app-layout>
@@ -46,7 +46,7 @@
                             </div>
                             
                             <div class="buttons" id="buttons">
-                                <form method="get" id="popupForm" action="/my_ads/{{ $myAd->id }}/edit">
+                                <form method="get" id="formChange" action="/my_ads/{{ $myAd->id }}/edit">
                                     @csrf
                                     <button id="buttonChange" class="buttonChange">Изменить</button>
                                 </form>
@@ -58,10 +58,9 @@
 
                 <!--Popup-->    
                 <div class="popupBoxShow hidden" id="popupBoxShow">
-                    <div class="backPopupBox"></div>
                     <div class="popupText" id="popupText"></div>
                     <div class="buttonPopupBox" id="buttonPopupBox">
-                        <form method="post" id="popupForm">
+                        <form method="post" id="popupForm" name="popupForm" action="">
                             @method('delete')
                             @csrf
                             <button type="submit" id="popupButtonYes" class="popupButtonYes">Да</button>
