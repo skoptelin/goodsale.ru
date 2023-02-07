@@ -19,22 +19,22 @@
 
                         <div class="titleAd">
                             <div class="titleAdText">Название:</div>
-                            <input name="title" id="titleAd" class="titleAdInput" required value="{{ $ad->title }}"/>
+                            <input name="title" id="titleAd" class="titleAdInput" required maxlength="200" value="{{ $ad->title }}"/>
                         </div>
 
                         <div class="descriptionAd">
                             <div class="descriptionAdText">Описание:</div>
-                            <textarea name="description" id="descriptionAd" class="descriptionAdInput" required>{{ $ad->description }}</textarea>
+                            <textarea name="description" id="descriptionAd" class="descriptionAdInput" required maxlength="550">{{ $ad->description }}</textarea>
                         </div>
 
                         <div class="priceAd">
                             <div class="priceAdText">Цена:</div>
-                            <input name="price" type="number" id="priceAd" class="priceAdInput" required value="{{ $ad->price }}"/>
+                            <input name="price" type="number" id="priceAd" class="priceAdInput" required maxlength="200" value="{{ $ad->price }}"/>
                         </div>
 
                         <div class="priceAd">
                             <div class="priceAdText">Местоположение:</div>
-                            <input name="city" id="priceAd" class="priceAdInput" required value="{{ $ad->city }}"/>
+                            <input name="city" id="priceAd" class="priceAdInput" required maxlength="200" value="{{ $ad->city }}"/>
                         </div>
 
                     </div>

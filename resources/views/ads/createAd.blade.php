@@ -18,22 +18,22 @@
 
                         <div class="titleAd">
                             <div class="titleAdText">Название:</div>
-                            <input name="title" id="titleAd" class="titleAdInput" required/>
+                            <input name="title" id="titleAd" class="titleAdInput" required maxlength="200"/>
                         </div>
 
                         <div class="descriptionAd">
                             <div class="descriptionAdText">Описание:</div>
-                            <textarea name="description" id="descriptionAd" class="descriptionAdInput" required></textarea>
+                            <textarea name="description" id="descriptionAd" class="descriptionAdInput" required maxlength="550"></textarea>
                         </div>
 
                         <div class="priceAd">
                             <div class="priceAdText">Цена:</div>
-                            <input name="price" type="number" id="priceAd" class="priceAdInput" required/>
+                            <input name="price" type="number" id="priceAd" class="priceAdInput" required maxlength="200"/>
                         </div>
 
-                        <div class="priceAd">
-                            <div class="priceAdText">Местоположение:</div>
-                            <input name="city" id="priceAd" class="priceAdInput" required/>
+                        <div class="cityAd">
+                            <div class="cityAdText">Местоположение:</div>
+                            <input name="city" id="cityAd" class="cityAdInput" required maxlength="200"/>
                         </div>
 
                     </div>

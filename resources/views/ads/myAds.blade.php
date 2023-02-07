@@ -29,7 +29,7 @@
                             <div class="adInfo" id="adInfo">
                                 <div class="titleAndDiscription" id="titleAndDiscription">
                                     <div class="title" id="title">{{ $myAd->title }}</div>
-                                    <div class="discription" id="discription">{{ $myAd->description }}</div>
+                                    <div class="description" id="description">{{ $myAd->description }}</div>
                                 </div>
 
                                 <div class="adPrice" id="adPrice">
